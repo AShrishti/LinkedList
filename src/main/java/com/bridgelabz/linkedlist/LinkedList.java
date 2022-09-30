@@ -79,11 +79,18 @@ class LinkedList {
 		/* Start with the empty list */
 		LinkedList llist = new LinkedList();
 
-		// Insert 70. So linked list becomes 70->NUll
-		llist.push(70);
-
-		llist.push(30);
-		llist.push(56);
+		/*
+		 * // Insert 70. So linked list becomes 70->NUll llist.push(70); llist.push(30);
+		 * llist.push(56);
+		 */
+		
+		llist.append(56);
+		llist.append(30);
+		llist.append(70);
+		
+		
+		 System.out.println("Created Linked Output is: ");
+	        llist.printList();
 
 	}
 }
