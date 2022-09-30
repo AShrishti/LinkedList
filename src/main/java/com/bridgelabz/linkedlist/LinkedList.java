@@ -230,7 +230,7 @@ class LinkedList {
 		llist.push_at(llist.searchNode(30), 40); // adding element after 30  UC7
 		llist.printList();
 		
-		llist.sortList();						// Linkedlist after sorting
+		llist.sortList();						// Linkedlist after sorting UC10
 		System.out.println("\nLinkedlist after sorting ");
 		llist.printList();
 		
