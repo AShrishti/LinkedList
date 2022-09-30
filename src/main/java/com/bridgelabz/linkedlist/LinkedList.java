@@ -24,6 +24,7 @@ class LinkedList {
 
 		// the head to point to new Node */
 		head = new_node;
+
 	}
 
 	void push_at(int position, int newElement) {
@@ -78,7 +79,7 @@ class LinkedList {
 			System.out.println("Element " + data + "  is present in the list at the position : " + i);
 		else
 			System.out.println("Element " + data + " is not present in the list");
-		return i+1;
+		return i + 1;
 	}
 
 	public void append(int new_data) {
@@ -106,20 +107,20 @@ class LinkedList {
 	}
 
 	void deleteNode(int data) {
-		  Node temp = head, prev = null;
-		  if (temp != null && temp.data == data) {
-		    head = temp.next;
-		    return;
-		  }
-		  while (temp != null && temp.data != data) {
-		    prev = temp;
-		    temp = temp.next;
-		  }
-		  if (temp == null)
-		    return;
-		 
-		  prev.next = temp.next;
+		Node temp = head, prev = null;
+		if (temp != null && temp.data == data) {
+			head = temp.next;
+			return;
 		}
+		while (temp != null && temp.data != data) {
+			prev = temp;
+			temp = temp.next;
+		}
+		if (temp == null)
+			return;
+
+		prev.next = temp.next;
+	}
 
 	public Node removeFirstNode() { // pop
 		if (head == null)
@@ -131,8 +132,6 @@ class LinkedList {
 
 		return head;
 	}
-
-
 
 	public Node removeLastNode() // popLast
 	{
@@ -172,44 +171,42 @@ class LinkedList {
 			tnode = tnode.next;
 		}
 	}
-	
-	 public void sortList()
-	    {
-	 
-	        // Node current will point to head
-	        Node current = head, index = null;
-	 
-	        int temp;
-	 
-	        if (head == null) {
-	            return;
-	        }
-	        else {
-	            while (current != null) {
-	                // Node index will point to node next to current
-	                
-	                index = current.next;
-	 
-	                while (index != null) {
-						/*
-						 * If current node's data is greater than index's node data, swap the data
-						 * between them
-						 */
-	                    if (current.data > index.data) {
-	                        temp = current.data;
-	                        current.data = index.data;
-	                        index.data = temp;
-	                    }
-	 
-	                    index = index.next;
-	                }
-	                current = current.next;
-	            }
-	        }
-	    }
+
+	public void sortList() {
+
+		// Node current will point to head
+		Node current = head, index = null;
+
+		int temp;
+
+		if (head == null) {
+			return;
+		} else {
+			while (current != null) {
+				// Node index will point to node next to current
+
+				index = current.next;
+
+				while (index != null) {
+					/*
+					 * If current node's data is greater than index's node data, swap the data
+					 * between them
+					 */
+					if (current.data > index.data) {
+						temp = current.data;
+						current.data = index.data;
+						index.data = temp;
+					}
+
+					index = index.next;
+				}
+				current = current.next;
+			}
+		}
+	}
 
 	public static void main(String[] args) {
-		
+
 		LinkedList llist = new LinkedList();
 
 		/*
@@ -227,28 +224,26 @@ class LinkedList {
 		System.out.println("Created Linked Output is: ");
 		llist.printList();
 		llist.searchNode(30);
-		llist.push_at(llist.searchNode(30), 40); // adding element after 30  UC7
+		llist.push_at(llist.searchNode(30), 40); // adding element after 30 UC7
 		llist.printList();
-		
-		llist.sortList();						// Linkedlist after sorting UC10
+
+		llist.sortList(); // Linkedlist after sorting UC10
 		System.out.println("\nLinkedlist after sorting ");
 		llist.printList();
-		
+
 		llist.deleteNode(40);
 		System.out.println("\nLinkedlist after removing an element ");
 		llist.printList();
-		llist.lengthOfLinkedList();  //list size of linkedlist
-		
+		llist.lengthOfLinkedList(); // list size of linkedlist
+
 		llist.removeFirstNode();
 		System.out.println("\nLinkedlist after first element removed");
 		llist.printList();
 
-		
 		llist.removeLastNode();
 		System.out.println("\nLinkedlist after Last element removed");
 		llist.printList();
 		llist.lengthOfLinkedList();
 
-		
 	}
 }
