@@ -26,21 +26,59 @@ class LinkedList {
 		head = new_node;
 	}
 
-	public void insertAfter(Node prev_node, int new_data) {
-		/* Inserts a new node after the given prev_node. */
+	void push_at(int position, int newElement) {
+		Node newNode = new Node(newElement);
+		newNode.data = newElement;
+		newNode.next = null;
 
-		if (prev_node == null) {
-			System.out.println("The given previous node cannot be null");
-			return;
+		if (position < 1) {
+			System.out.print("\nposition should be >= 1.");
+		} else if (position == 1) {
+			newNode.next = head;
+			head = newNode;
+		} else {
+
+			Node temp = new Node(newElement);
+			temp = head;
+			for (int i = 1; i < position - 1; i++) {
+				if (temp != null) {
+					temp = temp.next;
+				}
+			}
+
+			if (temp != null) {
+				newNode.next = temp.next;
+				temp.next = newNode;
+			} else {
+				System.out.print("\nThe previous node is null.");
+			}
 		}
+	}
 
-		Node new_node = new Node(new_data);
-
-		// Make next of new Node as next of prev_node */
-		new_node.next = prev_node.next;
-
-		// make next of prev_node as new_node */
-		prev_node.next = new_node;
+	// searchNode() will search for a given node in the list
+	public int searchNode(int data) {
+		Node current = head;
+		int i = 1;
+		boolean flag = false;
+		// Checks whether list is empty
+		if (head == null) {
+			System.out.println("List is empty");
+		} else {
+			while (current != null) {
+				// Compares with each node present in the list
+				if (current.data == data) {
+					flag = true;
+					break;
+				}
+				i++;
+				current = current.next;
+			}
+		}
+		if (flag)
+			System.out.println("Element is present in the list at the position : " + i);
+		else
+			System.out.println("Element is not present in the list");
+		return i;
 	}
 
 	public void append(int new_data) {
@@ -83,14 +121,16 @@ class LinkedList {
 		 * // Insert 70. So linked list becomes 70->NUll llist.push(70); llist.push(30);
 		 * llist.push(56);
 		 */
-		
-		llist.append(56);
-		llist.append(30);
-		llist.append(70);
-		
-		
-		 System.out.println("Created Linked Output is: ");
-	        llist.printList();
+
+		/*
+		 * llist.append(56); llist.append(30); llist.append(70);
+		 */
+		llist.push(56);// adding element at front
+		llist.append(70);// adding element at end
+		llist.push_at(llist.searchNode(56) + 1, 8); // add element at particular position
+
+		System.out.println("Created Linked Output is: ");
+		llist.printList();
 
 	}
 }
