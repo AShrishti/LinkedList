@@ -75,10 +75,10 @@ class LinkedList {
 			}
 		}
 		if (flag)
-			System.out.println("Element is present in the list at the position : " + i);
+			System.out.println("Element " + data + "  is present in the list at the position : " + i);
 		else
-			System.out.println("Element is not present in the list");
-		return i;
+			System.out.println("Element " + data + " is not present in the list");
+		return i+1;
 	}
 
 	public void append(int new_data) {
@@ -105,7 +105,23 @@ class LinkedList {
 		return;
 	}
 
-	public Node removeFirstNode() {   //pop
+	void deleteNode(int data) {
+		  Node temp = head, prev = null;
+		  if (temp != null && temp.data == data) {
+		    head = temp.next;
+		    return;
+		  }
+		  while (temp != null && temp.data != data) {
+		    prev = temp;
+		    temp = temp.next;
+		  }
+		  if (temp == null)
+		    return;
+		 
+		  prev.next = temp.next;
+		}
+
+	public Node removeFirstNode() { // pop
 		if (head == null)
 			return null;
 
@@ -115,26 +131,39 @@ class LinkedList {
 
 		return head;
 	}
-	
-	public Node removeLastNode() //popLast
-    {
-        if (head == null)
-            return null;
- 
-        if (head.next == null) {
-            return null;
-        }
- 
-        // Find the second last node
-        Node second_last = head;
-        while (second_last.next.next != null)
-            second_last = second_last.next;
- 
-        // Change next of second last
-        second_last.next = null;
- 
-        return head;
-    }
+
+
+
+	public Node removeLastNode() // popLast
+	{
+		if (head == null)
+			return null;
+
+		if (head.next == null) {
+			return null;
+		}
+
+		// Find the second last node
+		Node second_last = head;
+		while (second_last.next.next != null)
+			second_last = second_last.next;
+
+		// Change next of second last
+		second_last.next = null;
+
+		return head;
+	}
+
+	public int lengthOfLinkedList() {
+		Node temp = head;
+		int count = 0;
+		while (temp != null) {
+			temp = temp.next;
+			count++;
+		}
+		System.out.println("\nsize of LinkedList is " + count);
+		return count;
+	}
 
 	public void printList() {
 		Node tnode = head;
@@ -158,17 +187,30 @@ class LinkedList {
 		 */
 		llist.push(56);// adding element at front
 		llist.append(70);// adding element at end
-		llist.push_at(llist.searchNode(56) + 1, 30); // add element at particular position
+		llist.push_at(llist.searchNode(56), 30); // add element at particular position
 
 		System.out.println("Created Linked Output is: ");
 		llist.printList();
+		llist.searchNode(30);
+		llist.push_at(llist.searchNode(30), 40); // adding element after 30  UC7
+		llist.printList();
+	
+		
+		llist.deleteNode(40);
+		System.out.println("\nLinkedlist after removing an element ");
+		llist.printList();
+		llist.lengthOfLinkedList();  //list size of linkedlist
+		
 		llist.removeFirstNode();
 		System.out.println("\nLinkedlist after first element removed");
 		llist.printList();
+
 		
 		llist.removeLastNode();
-		
 		System.out.println("\nLinkedlist after Last element removed");
 		llist.printList();
+		llist.lengthOfLinkedList();
+
+		
 	}
 }
