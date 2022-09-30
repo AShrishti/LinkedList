@@ -105,6 +105,37 @@ class LinkedList {
 		return;
 	}
 
+	public Node removeFirstNode() {   //pop
+		if (head == null)
+			return null;
+
+		// Move the head pointer to the next node
+		Node temp = head;
+		head = head.next;
+
+		return head;
+	}
+	
+	public Node removeLastNode() //popLast
+    {
+        if (head == null)
+            return null;
+ 
+        if (head.next == null) {
+            return null;
+        }
+ 
+        // Find the second last node
+        Node second_last = head;
+        while (second_last.next.next != null)
+            second_last = second_last.next;
+ 
+        // Change next of second last
+        second_last.next = null;
+ 
+        return head;
+    }
+
 	public void printList() {
 		Node tnode = head;
 		while (tnode != null) {
@@ -127,10 +158,17 @@ class LinkedList {
 		 */
 		llist.push(56);// adding element at front
 		llist.append(70);// adding element at end
-		llist.push_at(llist.searchNode(56) + 1, 8); // add element at particular position
+		llist.push_at(llist.searchNode(56) + 1, 30); // add element at particular position
 
 		System.out.println("Created Linked Output is: ");
 		llist.printList();
-
+		llist.removeFirstNode();
+		System.out.println("\nLinkedlist after first element removed");
+		llist.printList();
+		
+		llist.removeLastNode();
+		
+		System.out.println("\nLinkedlist after Last element removed");
+		llist.printList();
 	}
 }
