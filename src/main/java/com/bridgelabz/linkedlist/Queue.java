@@ -5,7 +5,7 @@ class Node {
 	Node next; // pointer to the next node
 
 	public Node(int data) {
-		// set data in the allocated node and return it
+
 		this.data = data;
 		this.next = null;
 	}
@@ -16,8 +16,7 @@ class QueueUsingLinkedList {
 	private static Node rear = null, front = null;
 	private static int count = 0;
 
-	// Utility function to dequeue the front element
-	public static int dequeue() // delete at the beginning
+	public int dequeue() // delete at the beginning
 	{
 		if (front == null) {
 			System.out.println("\nQueue Underflow");
@@ -43,7 +42,7 @@ class QueueUsingLinkedList {
 	}
 
 	// Utility function to add an item to the queue
-	public static void enqueue(int item) // insertion at the end
+	public void enqueue(int item) // insertion at the end
 	{
 		// allocate a new node in a heap
 		Node node = new Node(item);
@@ -80,13 +79,13 @@ public class Queue {
 
 	public static void main(String[] args) {
 
-		QueueUsingLinkedList q = new QueueUsingLinkedList(); //FIFO
-		q.enqueue(1);		//UC3
+		QueueUsingLinkedList q = new QueueUsingLinkedList(); // FIFO
+		q.enqueue(1); // UC3
 		q.enqueue(2);
 		q.enqueue(3);
 		q.enqueue(4);
 
-		q.dequeue();  		//UC4
+		q.dequeue(); // UC4
 		q.dequeue();
 		q.dequeue();
 		q.dequeue();
