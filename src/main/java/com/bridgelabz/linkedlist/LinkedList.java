@@ -88,7 +88,7 @@ class LinkedList {
 	}
 
 	public static void main(String[] args) {
-		/* Start with the empty list */
+		// Start with the empty list 
 		LinkedList llist = new LinkedList();
 
 		// Insert 70. So linked list becomes 70->NUll
