@@ -172,9 +172,44 @@ class LinkedList {
 			tnode = tnode.next;
 		}
 	}
+	
+	 public void sortList()
+	    {
+	 
+	        // Node current will point to head
+	        Node current = head, index = null;
+	 
+	        int temp;
+	 
+	        if (head == null) {
+	            return;
+	        }
+	        else {
+	            while (current != null) {
+	                // Node index will point to node next to current
+	                
+	                index = current.next;
+	 
+	                while (index != null) {
+						/*
+						 * If current node's data is greater than index's node data, swap the data
+						 * between them
+						 */
+	                    if (current.data > index.data) {
+	                        temp = current.data;
+	                        current.data = index.data;
+	                        index.data = temp;
+	                    }
+	 
+	                    index = index.next;
+	                }
+	                current = current.next;
+	            }
+	        }
+	    }
 
 	public static void main(String[] args) {
-		/* Start with the empty list */
+		
 		LinkedList llist = new LinkedList();
 
 		/*
@@ -194,7 +229,10 @@ class LinkedList {
 		llist.searchNode(30);
 		llist.push_at(llist.searchNode(30), 40); // adding element after 30  UC7
 		llist.printList();
-	
+		
+		llist.sortList();						// Linkedlist after sorting
+		System.out.println("\nLinkedlist after sorting ");
+		llist.printList();
 		
 		llist.deleteNode(40);
 		System.out.println("\nLinkedlist after removing an element ");
